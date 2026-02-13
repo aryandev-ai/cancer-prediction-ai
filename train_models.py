@@ -19,15 +19,17 @@ for c in cancers:
 
     X_train, X_test, y_train, y_test = train_test_split(X, y)
 
-    model = RandomForestClassifier()
-    model.fit(X_train, y_train)
+from sklearn.tree import DecisionTreeClassifier
 
-    preds = model.predict(X_test)
-    acc = accuracy_score(y_test, preds)
+model = DecisionTreeClassifier(max_depth=5)
+model.fit(X_train, y_train)
 
-    accuracies.append(acc)
+preds = model.predict(X_test)
+acc = accuracy_score(y_test, preds)
 
-    joblib.dump(model, f"{c}.joblib")
+accuracies.append(acc)
+
+joblib.dump(model, f"{c}.joblib")
 
 # plot accuracy graph
 plt.bar(cancers, accuracies)
