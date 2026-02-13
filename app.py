@@ -5,8 +5,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-if not os.path.exists("breast.joblib"):
-    import train_models
+import train_models  # always train first
 
 models = {
     "Breast": joblib.load("breast.joblib"),
@@ -14,6 +13,7 @@ models = {
     "Oral": joblib.load("oral.joblib"),
     "Thyroid": joblib.load("thyroid.joblib")
 }
+
 @app.route("/")
 def home():
     return render_template("index.html")
