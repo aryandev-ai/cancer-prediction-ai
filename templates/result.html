@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prediction Result</title>
+</head>
+
+<body style="background:#111;color:white;text-align:center;font-family:sans-serif">
+
+<h1>Prediction Result</h1>
+
+<h2>{{ cancer }}</h2>
+
+{% if result == "High Risk" %}
+<h3 style="color:red">{{ result }}</h3>
+{% else %}
+<h3 style="color:green">{{ result }}</h3>
+{% endif %}
+
+<h4>Confidence: {{ confidence }}%</h4>
+
+<div style="width:300px;height:20px;background:#333;border-radius:10px;margin:auto">
+<div style="width:{{ confidence }}%;height:20px;background:red;border-radius:10px"></div>
+</div>
+
+<br>
+<a href="/" style="color:white">Back</a>
+
+</body>
+</html>
